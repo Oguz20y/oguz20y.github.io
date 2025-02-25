@@ -17,20 +17,30 @@
       color: #fff;
       line-height: 1.6;
     }
-    header {
-      text-align: center;
-      padding: 80px 0 20px;
+    .header-container {
+      display: flex;
+      align-items: center;
+      padding: 50px 560px 20px; 
+    }
+    .profile-image {
+      width: 100px;
+      height: 120px;
+      border: 3px solid #8B0000;
+      margin-right: 30px; /* Boşluk artırıldı */
+    }
+    .header-text {
+      display: flex;
+      flex-direction: column;
     }
     header h1 {
-      font-size: 56px;
-      font-family: 'Inter', sans-serif;
+      font-size: 48px;
       font-weight: 300;
       margin: 0;
     }
     header h2 {
-      font-size: 36px;
+      font-size: 28px;
       font-weight: 300;
-      margin: 5px 0 15px;
+      margin: 5px 0 10px;
     }
     .header-line {
       border-bottom: 2px solid #8B0000;
@@ -40,7 +50,7 @@
     section {
       max-width: 1200px;
       margin: 0 auto;
-      padding: 20px;
+      padding: 20px 400px; /* Yazılarla hizalamak için padding artırıldı */
     }
     section h3 {
       font-size: 28px;
@@ -73,8 +83,13 @@
 </head>
 <body>
   <header>
-    <h1>Oğuzhan YILMAZ</h1>
-    <h2>Bilgisayar Mühendisi</h2>
+    <div class="header-container">
+      <img src="oguz.yilmaz.jpg" alt="Oğuzhan YILMAZ" class="profile-image">
+      <div class="header-text">
+        <h1>Oğuzhan YILMAZ</h1>
+        <h2>Bilgisayar Mühendisi</h2>
+      </div>
+    </div>
     <div class="header-line"></div>
   </header>
   
@@ -109,7 +124,6 @@
     <ul>
       <li>Office Programları</li>
       <li>C#</li>
-      <li>Unity</li>
       <li>SQLite</li>
       <li>Python</li>
       <li>Oracle SQL</li>
