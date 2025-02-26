@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Oğuzhan YILMAZ - Game Developer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary-color: #8B0000;
+      --secondary-color: #FF3333;
+      --dark-bg: #121212;
+      --card-bg: #1E1E1E;
+      --text-primary: #fff;
+      --text-secondary: #ccc;
+      --transition: all 0.3s ease;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      background-color: var(--dark-bg);
+      font-family: 'Inter', sans-serif;
+      color: var(--text-primary);
+      font-weight: 300;
+      line-height: 1.6;
+    }
+    
+    /* Navigasyon Barı - Sabit Pozisyon */
+    #navbar {
+      display: flex;
+      justify-content: center; /* Merkezde konumlandırma için değişti */
+      align-items: center;
+      padding: 15px 30px;
+      background-color: rgba(0, 0, 0, 0.8);
+      position: fixed !important;
+      width: 100% !important;
+      top: 0 !important;
+      left: 0 !important;
+      z-index: 999 !important;
+      backdrop-filter: blur(5px);
+      -webkit-backdrop-filter: blur(5px);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .navbar-logo {
+      font-size: 20px;
+      font-weight: 500;
+      color: var(--text-primary);
+      margin-right: 850px; /* Boşluğu biraz arttırdım */
+    }
+
+    .navbar-links {
+      display: flex;
+    }
+    
+    #navbar a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      margin: 0 15px;
+      font-size: 16px;
+      transition: var(--transition);
+      position: relative;
+    }
+    
+    #navbar a:hover {
+      color: var(--secondary-color);
+    }
+    
+    #navbar a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -5px;
+      left: 0;
+      background-color: var(--primary-color);
+      transition: var(--transition);
+    }
+    
+    #navbar a:hover::after {
+      width: 100%;
+    }
+    
+    /* Profil Başlık Bölümü */
+    .profile-header {
+      padding: 70px 0 30px;
+      text-align: center;
+      background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('/api/placeholder/1920/300') center/cover;
+    }
+    
+    .profile-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    .profile-intro h1 {
+      font-size: 42px;
+      font-weight: 300;
+      margin-bottom: 3px;
+      margin-top: 10px;
+    }
+    
+    .profile-intro h2 {
+      font-size: 24px;
+      font-weight: 300;
+      color: var(--text-secondary);
+      margin-bottom: 10px;
+    }
+    
+    .section-title {
+      font-size: 28px;
+      font-weight: 300;
+      text-align: center;
+      margin: 20px 0;
+      position: relative;
+      padding-bottom: 0px;
+    }
+    
+    /* Projeler Grid */
+    .projects-container {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 35px;
+      max-width: 1400px;
+      margin: 50px auto;
+      padding: 0 20px;
+    }
+    
+    .project-box {
+      background-color: var(--card-bg);
+      border: 2px solid var(--primary-color);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(139, 0, 0, 0.3);
+      transition: var(--transition);
+    }
+    
+    .project-box:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(139, 0, 0, 0.4);
+      border-color: var(--secondary-color);
+    }
+    
+    .video-wrapper {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+    }
+    
+    .video-wrapper iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+    
+    .project-title {
+      padding: 15px;
+      font-size: 18px;
+      font-weight: 400;
+      text-align: center;
+      color: var(--text-primary);
+    }
+    
+    /* Pagination - GÜNCELLENEN KISIM */
+    .pagination-container {
+      display: flex;
+      justify-content: center;
+      margin-top: -30px; /* Boşluğu azaltmak için negatif margin kullanıldı */
+      margin-bottom: 0px;
+    }
+    
+    .pagination {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+      padding: 0px 20px; /* Üst padding 0px */
+    }
+    
+    .pagination a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 24px;
+      transition: var(--transition);
+    }
+    
+    .pagination a:hover {
+      color: var(--secondary-color);
+    }
+    
+    .pagination .separator {
+      color: var(--primary-color);
+      font-size: 20px;
+    }
+    
+    /* Footer - GÜNCELLENEN KISIM */
+    footer {
+      background-color: rgba(0, 0, 0, 0.5);
+      padding: 39px 0; /* Üst ve alt padding'i eşit yaptım */
+      margin-top: 29px;
+      border-top: 1px solid rgba(139, 0, 0, 0.3);
+    }
+    
+    .footer-content {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: center;
+      padding: 0 30px;
+    }
+    
+    .footer-section h4 {
+      font-size: 20px;
+      font-weight: 500;
+      margin-bottom: 15px;
+      position: relative;
+      padding-bottom: 10px;
+      text-align: center;
+    }
+    
+    .footer-section h4::after {
+      content: '';
+      position: absolute;
+      width: 60%;
+      height: 2px;
+      background-color: var(--primary-color);
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    
+    .footer-links {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      align-items: center;
+    }
+    
+    .social-links {
+      display: flex;
+      gap: 25px; /* Sosyal medya linkleri arasındaki boşluk */
+      justify-content: center;
+      flex-wrap: wrap; /* Mobil görünümde alt alta düşmesi için */
+    }
+    
+    .footer-links a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .footer-links a i {
+      color: var(--primary-color);
+    }
+    
+    .footer-links a:hover {
+      color: var(--secondary-color);
+      transform: translateY(-3px); /* Dikey hareket daha uygun olur */
+    }
+    
+    /* Responsive */
+    @media (max-width: 1200px) {
+      .projects-container {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .projects-container {
+        grid-template-columns: 1fr;
+      }
+      
+      .profile-intro h1 {
+        font-size: 32px;
+      }
+      
+      .profile-intro h2 {
+        font-size: 20px;
+      }
+      
+      #navbar {
+        flex-wrap: wrap;
+      }
+      
+      #navbar a {
+        margin: 5px 10px;
+      }
+      
+      .social-links {
+        gap: 15px; /* Mobil görünümde daha az boşluk */
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .social-links {
+        flex-direction: column; /* Çok küçük ekranlarda alt alta göster */
+        align-items: center;
+        gap: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Üst navigasyon menüsü -->
+  <div id="navbar">
+    <div class="navbar-links">
+	  <a href="index.html"><i class="fas fa-home"></i> Ana Sayfa</a>
+      <a href="about.html"><i class="fas fa-user"></i> Hakkımda</a>
+    </div>
+  </div>
+
+  <!-- Profil Header -->
+  <section class="profile-header">
+    <div class="profile-container">
+      <div class="profile-intro">
+        <h1>Projelerim</h1>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projeler Grid -->
+  <div class="projects-container">
+    <!-- 1. Satır -->
+    <div class="project-box">
+      <div class="video-wrapper">
+        <iframe src="https://www.youtube.com/embed/0-MnvA-JkEI?si=juAEkTRQlDSxbQZd"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen></iframe>
+      </div>
+      <div class="project-title">Drift Rush</div>
+    </div>
+    
+    <div class="project-box">
+      <div class="video-wrapper">
+        <iframe src="https://www.youtube.com/embed/JlX1jn3A-ZQ?si=g-1CHOmY2g9tDPVq"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen></iframe>
+      </div>
+      <div class="project-title">Emberhold</div>
+    </div>
+    
+    <div class="project-box">
+      <div class="video-wrapper">
+        <iframe src="https://www.youtube.com/embed/9CZ75Dq_dWY?si=OODC9ebWB8fOPM_N"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen></iframe>
+      </div>
+      <div class="project-title">Void Runner</div>
+    </div>
+
+    <!-- 2. Satır -->
+    <div class="project-box">
+      <div class="video-wrapper">
+        <iframe src="https://www.youtube.com/embed/TbySAWSa7pQ?si=HgwWZrqWST4MbPhv"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen></iframe>
+      </div>
+      <div class="project-title">Cave Journey</div>
+    </div>
+    
+    <div class="project-box">
+      <div class="video-wrapper">
+        <iframe src="https://www.youtube.com/embed/rD5B6tUPJTA"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen></iframe>
+      </div>
+      <div class="project-title">Pong Rivals</div>
+    </div>
+    
+    <div class="project-box">
+      <div class="video-wrapper">
+        <iframe src="https://youtube.com/embed/tTukuPSg1zs"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen></iframe>
+      </div>
+      <div class="project-title">Leap Up</div>
+    </div>
+  </div>
+
+  <!-- Pagination -->
+  <div class="pagination-container">
+    <div class="pagination">
+      <a href="projects1.html">1</a>
+      <span class="separator">•</span>
+      <a href="projects2.html">2</a>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer id="contact">
+    <div class="footer-content">
+      <div class="footer-section" style="margin: 0 auto;">
+        <h4>İletişim</h4>
+        <div class="footer-links">
+          <a href="mailto:oguz.hyilmaz20@gmail.com"><i class="fas fa-envelope"></i> oguz.hyilmaz20@gmail.com</a>
+          <div class="social-links">
+            <a href="https://linkedin.com/in/oğuzhan-yılmaz-701874254" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+            <a href="https://www.youtube.com/@OguzhanY.Mobile" target="_blank"><i class="fab fa-youtube"></i> YouTube</a>
+            <a href="#"><i class="fab fa-github"></i> GitHub</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

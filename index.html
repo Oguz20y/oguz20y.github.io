@@ -1,236 +1,331 @@
-Şunu dedin:
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Oğuzhan YILMAZ - Unity Game Developer</title>
-    <!-- Inter Fontu Google Fonts üzerinden ekleniyor -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            background-color: #000;
-            font-family: 'Inter', sans-serif;
-            color: #fff;
-            font-weight: 300;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Oğuzhan YILMAZ - Game Developer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary-color: #8B0000;
+      --secondary-color: #FF3333;
+      --dark-bg: #121212;
+      --card-bg: #1E1E1E;
+      --text-primary: #fff;
+      --text-secondary: #ccc;
+      --transition: all 0.3s ease;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      background-color: var(--dark-bg);
+      font-family: 'Inter', sans-serif;
+      color: var(--text-primary);
+      font-weight: 300;
+      line-height: 1.6;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    /* Navigasyon Barı */
+    #navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 30px;
+      background-color: rgba(0, 0, 0, 0.8);
+      position: fixed;
+      width: 100%;
+      top: 0;
+      left: 0;
+      z-index: 999;
+      backdrop-filter: blur(5px);
+      -webkit-backdrop-filter: blur(5px);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    }
 
-        header {
-            text-align: center;
-            padding: 80px 0 20px;
-            margin-bottom: 20px;
-        }
+    .navbar-logo {
+      font-size: 20px;
+      font-weight: 500;
+      color: var(--text-primary);
+    }
 
-            header h1 {
-                font-size: 56px;
-                margin: 0;
-                font-family: 'Inter', sans-serif;
-                font-weight: 300;
-            }
-
-            header h2 {
-                font-size: 36px;
-                margin: 5px 0 15px;
-                font-family: 'Inter', sans-serif;
-                font-weight: 300;
-            }
-
-        .header-line {
-            border-bottom: 2px solid #8B0000;
-            width: 1200px;
-            margin: 0 auto 20px;
-        }
-
-        .my-projects {
-            margin-top: 20px;
-            margin-bottom: 2px;
-            font-family: 'Inter', sans-serif;
-            font-size: 28px;
-            font-weight: 300;
-            color: #f2f2f2;
-        }
-
-        .container {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 40px;
-            padding: 0 20px 20px;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .box {
-            background-color: #333;
-            border: 2px solid #8B0000;
-            box-shadow: 0 0 10px #8B0000;
-            text-align: center;
-            padding: 25px;
-        }
-
-        .video-wrapper {
-            position: relative;
-            width: 100%;
-            aspect-ratio: 16 / 9;
-            background: #000;
-        }
-
-            .video-wrapper iframe {
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                border: none;
-            }
-
-        .mod-title {
-            margin-top: 10px;
-            font-size: 18px;
-            font-family: 'Inter', sans-serif;
-            font-weight: 300;
-        }
-
-        footer {
-            text-align: center;
-            padding: 20px 0;
-            margin-top: 20px;
-        }
-
-        .pagination-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-top: 20px;
-            margin-bottom: 20px;
-        }
-
-        .pagination {
-            margin-bottom: 5px;
-            font-size: 20px;
-            font-family: 'Inter', sans-serif;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            padding-bottom: 15px;
-            border-bottom: 2px solid #8B0000;
-            width: 1200px;
-            font-weight: 300;
-        }
-
-            .pagination a {
-                color: white;
-                text-decoration: none;
-                font-size: 20px;
-                font-weight: 300;
-            }
-
-                .pagination a:hover {
-                    text-decoration: underline;
-                }
-
-            .pagination .separator {
-                color: #888;
-                font-size: 18px;
-                font-weight: 300;
-            }
-
-        .footer-links {
-            margin-top: 0px;
-        }
-
-        footer a {
-            margin: 0 15px;
-            color: #fff;
-            font-family: 'Inter', sans-serif;
-            text-decoration: none;
-            font-size: 18px;
-            font-weight: 300;
-        }
-
-            footer a:hover {
-                text-decoration: underline;
-            }
-    </style>
+    .navbar-links {
+      display: flex;
+    }
+    
+    #navbar a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      margin: 0 15px;
+      font-size: 16px;
+      transition: var(--transition);
+      position: relative;
+    }
+    
+    #navbar a:hover {
+      color: var(--secondary-color);
+    }
+    
+    #navbar a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -5px;
+      left: 0;
+      background-color: var(--primary-color);
+      transition: var(--transition);
+    }
+    
+    #navbar a:hover::after {
+      width: 100%;
+    }
+    
+    /* Ana İçerik */
+    .main-content {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+    }
+    
+    .hero-container {
+      max-width: 800px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 0 20px;
+    }
+    
+    .hero-text {
+      width: 100%;
+      text-align: center;
+    }
+    
+    .hero-text h1 {
+      font-size: 42px;
+      font-weight: 300;
+      margin-bottom: 10px;
+    }
+    
+    .hero-text h2 {
+      font-size: 24px;
+      font-weight: 300;
+      color: var(--text-secondary);
+      margin-bottom: 20px;
+    }
+    
+    .hero-text p {
+      margin: 0 auto 20px;
+      color: var(--text-secondary);
+      font-size: 17px;
+      max-width: 600px;
+    }
+    
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 20px 0;
+      justify-content: center;
+    }
+    
+    .skill-tag {
+      display: inline-block;
+      background-color: rgba(139, 0, 0, 0.2);
+      color: var(--secondary-color);
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 14px;
+      transition: var(--transition);
+    }
+    
+    .skill-tag:hover {
+      background-color: rgba(139, 0, 0, 0.4);
+      transform: translateY(-2px);
+    }
+    
+    .cta-buttons {
+      display: flex;
+      justify-content: center;
+      margin-top: 25px;
+      gap: 15px;
+    }
+    
+    .cta-btn {
+      padding: 10px 24px;
+      border-radius: 4px;
+      font-size: 16px;
+      font-weight: 500;
+      text-decoration: none;
+      transition: var(--transition);
+    }
+    
+    .primary-btn {
+      background-color: var(--primary-color);
+      color: var(--text-primary);
+    }
+    
+    .primary-btn:hover {
+      background-color: var(--secondary-color);
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(139, 0, 0, 0.4);
+    }
+    
+    /* Footer */
+    footer {
+      background-color: rgba(0, 0, 0, 0.5);
+      padding: 30px 0;
+      border-top: 1px solid rgba(139, 0, 0, 0.3);
+    }
+    
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: center;
+      padding: 0 30px;
+    }
+    
+    .footer-section h4 {
+      font-size: 20px;
+      font-weight: 500;
+      margin-bottom: 15px;
+      position: relative;
+      padding-bottom: 10px;
+      text-align: center;
+    }
+    
+    .footer-section h4::after {
+      content: '';
+      position: absolute;
+      width: 60%;
+      height: 2px;
+      background-color: var(--primary-color);
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    
+    .footer-links {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      align-items: center;
+    }
+    
+    .social-links {
+      display: flex;
+      gap: 25px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    
+    .footer-links a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .footer-links a i {
+      color: var(--primary-color);
+    }
+    
+    .footer-links a:hover {
+      color: var(--secondary-color);
+      transform: translateY(-3px);
+    }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+      #navbar {
+        flex-direction: column;
+        padding: 15px 20px;
+      }
+      
+      .navbar-logo {
+        margin-bottom: 10px;
+      }
+      
+      .hero-text h1 {
+        font-size: 32px;
+      }
+      
+      .hero-text h2 {
+        font-size: 20px;
+      }
+      
+      .social-links {
+        gap: 15px;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .social-links {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+      }
+    }
+  </style>
 </head>
 <body>
-    <header>
+  <!-- Navigasyon barı kaldırıldı -->
+
+  <!-- Ana İçerik -->
+  <section class="main-content">
+    <div class="hero-container">
+      <div class="hero-text">
         <h1>Oğuzhan YILMAZ</h1>
-        <h2>Unity Game Developer</h2>
-        <div class="header-line"></div>
-        <div class="my-projects">My Projects:</div>
-    </header>
-
-    <div class="container">
-        <!-- 1. Satır -->
-        <div class="box">
-            <div class="video-wrapper">
-                <iframe src="https://www.youtube.com/embed/0-MnvA-JkEI?si=3rgmyjoRNAEnF3Vx"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowfullscreen></iframe>
-            </div>
-            <div class="mod-title">Drift Rush</div>
+        <h2>Bilgisayar Mühendisi & Oyun Geliştiricisi</h2>
+        <p>Bağımsız bir mobil oyun geliştiricisi olarak, oyun dünyasına yenilikçi ve eğlenceli fikirler kazandırmayı hedefliyorum.</p>
+        
+        <div class="skills">
+          <span class="skill-tag">C#</span>
+          <span class="skill-tag">Unity</span>
+          <span class="skill-tag">Mobile Game Development</span>
+          <span class="skill-tag">SQLite</span>
+          <span class="skill-tag">Python</span>
         </div>
-        <div class="box">
-            <div class="video-wrapper">
-                <iframe src="https://www.youtube.com/embed/JlX1jn3A-ZQ?si=g-1CHOmY2g9tDPVq"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowfullscreen></iframe>
-            </div>
-            <div class="mod-title">Emberhold</div>
+        
+        <div class="cta-buttons">
+          <a href="projects1.html" class="cta-btn primary-btn">Projelerim</a>
+          <a href="about.html" class="cta-btn primary-btn">Hakkımda</a>
         </div>
-        <div class="box">
-            <div class="video-wrapper">
-                <iframe src="https://www.youtube.com/embed/9CZ75Dq_dWY?si=OODC9ebWB8fOPM_N"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowfullscreen></iframe>
-            </div>
-            <div class="mod-title">Void Runner</div>
-        </div>
-
-        <!-- 2. Satır -->
-        <div class="box">
-            <div class="video-wrapper">
-                <iframe src="https://www.youtube.com/embed/TbySAWSa7pQ?si=HgwWZrqWST4MbPhv"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowfullscreen></iframe>
-            </div>
-            <div class="mod-title">Cave Journey</div>
-        </div>
-        <div class="box">
-            <div class="video-wrapper">
-                <iframe src="https://www.youtube.com/embed/rD5B6tUPJTA"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowfullscreen></iframe>
-            </div>
-            <div class="mod-title">Pong Rivals</div>
-        </div>
-        <div class="box">
-            <div class="video-wrapper">
-                <iframe src="https://youtube.com/embed/tTukuPSg1zs"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowfullscreen></iframe>
-            </div>
-            <div class="mod-title">Leap Up</div>
-        </div>
+      </div>
     </div>
+  </section>
 
-    <footer>
-        <div class="pagination-container">
-            <div class="pagination">
-                <a href="index.html">1</a>
-                <span class="separator">•</span>
-                <a href="Page 2.html">2</a>
-            </div>
-        </div>
+  <!-- Footer -->
+  <footer id="contact">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>İletişim</h4>
         <div class="footer-links">
-            <a href="about.html">About</a>
-            <a href="https://tr.linkedin.com/in/o%C4%9Fuzhan-y%C4%B1lmaz-701874254">LinkedIn</a>
+          <a href="mailto:oguz.hyilmaz20@gmail.com"><i class="fas fa-envelope"></i> oguz.hyilmaz20@gmail.com</a>
+          <div class="social-links">
+            <a href="https://linkedin.com/in/oğuzhan-yılmaz-701874254" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+            <a href="https://www.youtube.com/@OguzhanY.Mobile" target="_blank"><i class="fab fa-youtube"></i> YouTube</a>
+            <a href="#"><i class="fab fa-github"></i> GitHub</a>
+          </div>
         </div>
-    </footer>
+      </div>
+    </div>
+  </footer>
 </body>
 </html>

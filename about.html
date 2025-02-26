@@ -3,151 +3,493 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>About - Oğuzhan YILMAZ</title>
+  <title>Hakkımda - Oğuzhan YILMAZ</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-    body {
+    :root {
+      --primary-color: #8B0000;
+      --secondary-color: #FF3333;
+      --dark-bg: #121212;
+      --card-bg: #1E1E1E;
+      --text-primary: #fff;
+      --text-secondary: #ccc;
+      --transition: all 0.3s ease;
+    }
+    
+    .projects-button {
+      display: none; /* Projelerim butonunu gizledim */
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      padding: 10px 20px;
+      background-color: rgba(139, 0, 0, 0.7);
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    }
+    
+    .projects-button:hover {
+      background-color: var(--secondary-color);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    }
+    
+    .top-nav {
+      display: flex;
+      justify-content: center;
+      padding: 15px 0;
+      background-color: rgba(0, 0, 0, 0.5);
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 990;
+    }
+    
+    .top-nav a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      margin: 0 15px;
+      font-size: 16px;
+      transition: var(--transition);
+      position: relative;
+    }
+    
+    .top-nav a:hover {
+      color: var(--secondary-color);
+    }
+    
+    .top-nav a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -5px;
+      left: 0;
+      background-color: var(--primary-color);
+      transition: var(--transition);
+    }
+    
+    .top-nav a:hover::after {
+      width: 100%;
+    }
+    
+    * {
       margin: 0;
       padding: 0;
-      background-color: #000;
+      box-sizing: border-box;
+    }
+    
+    body {
+      background-color: var(--dark-bg);
       font-family: 'Inter', sans-serif;
+      color: var(--text-primary);
       font-weight: 300;
-      color: #fff;
       line-height: 1.6;
     }
-    .header-container {
+    
+    /* Profil Başlık Bölümü */
+    .profile-header {
+      padding: 100px 0 45px; /* Üst navigasyon için daha fazla padding ekledim */
+      text-align: center;
+      background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('/api/placeholder/1920/300') center/cover;
+    }
+    
+    .profile-container {
+      display: flex;
+      flex-direction: row; /* Burayı row olarak değiştirdim */
+      justify-content: center; /* İçerikleri ortaladım */
+      align-items: center; /* Dikey hizalama için */
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 20px;
+      gap: 30px; /* Elemanlar arasında boşluk */
+    }
+    
+    .profile-avatar {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      border: 4px solid var(--primary-color);
+      overflow: hidden;
+      position: relative;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+      flex-shrink: 0; /* Boyutun sabit kalmasını sağlar */
+    }
+    
+    .profile-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    .profile-intro {
+      text-align: left; /* Sol hizalama yaptım */
+    }
+    
+    .profile-intro h1 {
+      font-size: 42px;
+      font-weight: 300;
+      margin-bottom: 5px;
+    }
+    
+    .profile-intro h2 {
+      font-size: 24px;
+      font-weight: 300;
+      color: var(--text-secondary);
+      margin-bottom: 20px;
+    }
+    
+    .profile-social {
+      display: flex;
+      gap: 15px;
+      margin-top: 20px;
+      justify-content: flex-start; /* Sol hizalama yaptım */
+    }
+    
+    .profile-social a {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
       display: flex;
       align-items: center;
-      padding: 50px 560px 20px; 
+      justify-content: center;
+      background-color: rgba(255, 255, 255, 0.1);
+      color: var(--text-primary);
+      font-size: 18px;
+      transition: var(--transition);
     }
-    .profile-image {
-      width: 100px;
-      height: 120px;
-      border: 3px solid #8B0000;
-      margin-right: 30px; /* Boşluk artırıldı */
+    
+    .profile-social a:hover {
+      background-color: var(--primary-color);
+      transform: translateY(-3px);
     }
-    .header-text {
+    
+    /* Ana İçerik Bölümü */
+    .main-content {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 30px 30px 30px; /* Alttaki padding'i 20px'e düşürdüm */
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 40px;
+    }
+    
+    .info-section {
+      margin-bottom: 40px;
+    }
+    
+    .info-section h3 {
+      font-size: 24px;
+      font-weight: 400;
+      margin-bottom: 20px;
+      position: relative;
+      padding-bottom: 10px;
+      color: var(--text-primary);
+    }
+    
+    .info-section h3::after {
+      content: '';
+      position: absolute;
+      width: 100%; /* Çizgiyi başlık kadar uzattık */
+      height: 2px;
+      background-color: var(--primary-color);
+      bottom: 0;
+      left: 0;
+    }
+    
+    .info-section p {
+      margin-bottom: 15px;
+      color: var(--text-secondary);
+    }
+    
+    .info-section a {
+      color: var(--secondary-color);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+    
+    .info-section a:hover {
+      color: var(--primary-color);
+      text-decoration: underline;
+    }
+    
+    .info-list {
+      list-style: none;
+    }
+    
+    .info-list li {
+      margin-bottom: 12px;
+      position: relative;
+      padding-left: 25px;
+      color: var(--text-secondary);
+    }
+    
+    .info-list li::before {
+      content: '';
+      position: absolute;
+      width: 6px;
+      height: 6px;
+      background-color: var(--primary-color);
+      border-radius: 50%;
+      left: 0;
+      top: 10px;
+    }
+    
+    .info-list li strong {
+      color: var(--text-primary);
+      font-weight: 500;
+    }
+    
+    .skill-tag {
+      display: inline-block;
+      background-color: rgba(139, 0, 0, 0.2);
+      color: var(--secondary-color);
+      padding: 6px 12px;
+      margin: 5px;
+      border-radius: 20px;
+      font-size: 14px;
+      transition: var(--transition);
+    }
+    
+    .skill-tag:hover {
+      background-color: rgba(139, 0, 0, 0.4);
+      transform: translateY(-2px);
+    }
+    
+    /* Footer Stili */
+    footer {
+      background-color: rgba(0, 0, 0, 0.5);
+      padding: 15px 0; /* 30px'ten 15px'e düşürdüm */
+      margin-top: 0; /* 20px'ten 0'a düşürdüm */
+      border-top: 1px solid rgba(139, 0, 0, 0.3);
+    }
+    
+    .footer-content {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: center;
+      padding: 0 30px;
+    }
+    
+    .footer-section h4 {
+      font-size: 20px;
+      font-weight: 500;
+      margin-bottom: 15px;
+      position: relative;
+      padding-bottom: 10px;
+      text-align: center;
+    }
+    
+    .footer-section h4::after {
+      content: '';
+      position: absolute;
+      width: 60%;
+      height: 2px;
+      background-color: var(--primary-color);
+      bottom: 0;
+      left: 50%;
+	  transform: translateX(-50%);
+    }
+    
+    .footer-links {
       display: flex;
       flex-direction: column;
+      gap: 15px;
+      align-items: center;
     }
-    header h1 {
-      font-size: 48px;
-      font-weight: 300;
-      margin: 0;
+    
+    .social-links {
+      display: flex;
+      gap: 25px; /* Sosyal medya linkleri arasındaki boşluk */
+      justify-content: center;
+      flex-wrap: wrap; /* Mobil görünümde alt alta düşmesi için */
     }
-    header h2 {
-      font-size: 28px;
-      font-weight: 300;
-      margin: 5px 0 10px;
-    }
-    .header-line {
-      border-bottom: 2px solid #8B0000;
-      width: 1200px;
-      margin: 0 auto 20px;
-    }
-    section {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 20px 400px; /* Yazılarla hizalamak için padding artırıldı */
-    }
-    section h3 {
-      font-size: 28px;
-      font-weight: 300;
-      margin-bottom: 10px;
-      padding-bottom: 5px;
-      border-bottom: 2px solid #8B0000;
-    }
-    section p, section li {
-      font-size: 18px;
-    }
-    ul {
-      list-style: none;
-      padding: 0;
-    }
-    .footer {
-      text-align: center;
-      padding: 20px 0;
-      margin-top: 50px;
-      border-top: 1px solid #333;
-    }
-    a {
-      color: #fff;
+    
+    .footer-links a {
+      color: var(--text-secondary);
       text-decoration: none;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      gap: 10px;
     }
-    a:hover {
-      text-decoration: underline;
+    
+    .footer-links a i {
+      color: var(--primary-color);
+    }
+    
+    .footer-links a:hover {
+      color: var(--secondary-color);
+      transform: translateY(-3px); /* Dikey hareket daha uygun olur */
+    }
+    
+    /* Responsive düzenleme */
+    @media (max-width: 768px) {
+      .social-links {
+        gap: 15px; /* Mobil görünümde daha az boşluk */
+      }
+      
+      .profile-container {
+        flex-direction: column; /* Mobil görünümde dikey hizalama */
+      }
+      
+      .profile-intro {
+        text-align: center; /* Mobil görünümde merkez hizalama */
+      }
+      
+      .profile-social {
+        justify-content: center; /* Mobil görünümde merkez hizalama */
+      }
+      
+      .profile-intro h1 {
+        font-size: 32px;
+      }
+      
+      .profile-intro h2 {
+        font-size: 20px;
+      }
+      
+      .main-content {
+        grid-template-columns: 1fr;
+      }
+      
+      .profile-header {
+        padding: 100px 0 40px;
+      }
+      
+      .top-nav {
+        flex-wrap: wrap;
+      }
+      
+      .top-nav a {
+        margin: 5px 10px;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .social-links {
+        flex-direction: column; /* Çok küçük ekranlarda alt alta göster */
+        align-items: center;
+        gap: 10px;
+      }
     }
   </style>
 </head>
 <body>
-  <header>
-    <div class="header-container">
-      <img src="oguz.yilmaz.jpg" alt="Oğuzhan YILMAZ" class="profile-image">
-      <div class="header-text">
+  <!-- Üst navigasyon menüsü -->
+  <div class="top-nav">
+    <a href="index.html"><i class="fas fa-home"></i> Ana Sayfa</a>
+	<a href="projects1.html"><i class="fas fa-project-diagram"></i> Projelerim</a>
+    <a href="#contact"><i class="fas fa-envelope"></i> İletişim</a>
+  </div>
+  
+  <!-- Projelerim butonu -->
+  <a href="projects.html" class="projects-button">Projelerim</a>
+
+  <!-- Profil Header -->
+  <section class="profile-header">
+    <div class="profile-container">
+      <div class="profile-avatar">
+        <img src="oguz.yilmaz.jpg" alt="Oğuzhan YILMAZ">
+      </div>
+      <div class="profile-intro">
         <h1>Oğuzhan YILMAZ</h1>
         <h2>Bilgisayar Mühendisi</h2>
+        <div class="profile-social">
+          <a href="mailto:oguz.hyilmaz20@gmail.com"><i class="fas fa-envelope"></i></a>
+          <a href="https://linkedin.com/in/oğuzhan-yılmaz-701874254" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#"><i class="fab fa-github"></i></a>
+          <a href="https://www.youtube.com/@OguzhanY.Mobile" target="_blank"><i class="fab fa-youtube"></i></a>
+        </div>
       </div>
     </div>
-    <div class="header-line"></div>
-  </header>
-  
-  <section>
-    <h3>İletişim Bilgileri</h3>
-    <p>Email: <a href="mailto:oguz.hyilmaz20@gmail.com">oguz.hyilmaz20@gmail.com</a></p>
-    <p>LinkedIn: <a href="https://tr.linkedin.com/in/o%C4%9Fuzhan-y%C4%B1lmaz-701874254" target="_blank">LinkedIn Profili</a></p>
   </section>
 
-  <section>
-    <h3>Eğitim Durumu</h3>
-    <ul>
-      <li><strong>Balıkesir Üniversitesi</strong> - Bilgisayar Mühendisliği (Örgün Öğretim) (2021 – Halen)</li>
-      <li><strong>İzmir Buca Anadolu Lisesi</strong> (2014 – 2018)</li>
-      <li><strong>İzmir Buca TOKİ Turgut ÖZAL Ortaokulu</strong> (2011 – 2014)</li>
-      <li><strong>İzmir Buca Kıbrıs Şehidi Yzb. Cengiz TOPEL Ortaokulu</strong> (2006 – 2011)</li>
-    </ul>
-  </section>
+  <!-- Ana İçerik -->
+  <div class="main-content">
+    <div class="content-left">
+      <div class="info-section">
+        <h3>Hakkımda</h3>
+        <p>Bağımsız bir mobil oyun geliştiricisi olarak, oyun dünyasına yenilikçi ve eğlenceli fikirler kazandırmayı hedefliyorum. Programlama, oyun tasarımı ve oyun optimizasyonu konularında kendimi sürekli geliştirerek, hem teknik hem de sanatsal açıdan etkileyici oyunlar ortaya çıkarmaya çalışıyorum.</p>
+      </div>
+      
+      <div class="info-section">
+        <h3>Eğitim Durumu</h3>
+        <ul class="info-list">
+          <li><strong>Balıkesir Üniversitesi - Bilgisayar Mühendisliği</strong> (Örgün Öğretim) (2021 – Halen)</li>
+          <li><strong>İzmir Buca Anadolu Lisesi</strong> (2014 – 2018)</li>
+          <li><strong>İzmir Buca TOKİ Turgut ÖZAL Ortaokulu</strong> (2011 – 2014)</li>
+          <li><strong>İzmir Buca Kıbrıs Şehidi Yzb. Cengiz TOPEL Ortaokulu</strong> (2006 – 2011)</li>
+        </ul>
+      </div>
+      
+      <div class="info-section" style="margin-bottom: 10px;">
+        <h3>Katıldığım Seminerler</h3>
+        <ul class="info-list">
+          <li>1 Mart 2024 – Yazılım Öğrenme Yolculuğu, Doğuş Teknoloji</li>
+          <li>20 Kasım 2023 – EBST Kariyer Söyleşisi, Balıkesir</li>
+          <li>Temmuz 2022 – Makine Öğrenmesi</li>
+          <li style="margin-bottom: 0;">Mart 2021 – Balıkesir Üniversitesi EBST Topluluğu</li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="content-right">
+      <div class="info-section">
+        <h3>Teknik Beceriler</h3>
+        <div class="skills-container">
+          <span class="skill-tag">C#</span>
+          <span class="skill-tag">Unity</span>
+          <span class="skill-tag">SQLite</span>
+          <span class="skill-tag">Python</span>
+          <span class="skill-tag">Oracle SQL</span>
+          <span class="skill-tag">Matlab</span>
+          <span class="skill-tag">Office Programları</span>
+        </div>
+      </div>
+      
+      <div class="info-section">
+        <h3>Diller</h3>
+        <ul class="info-list">
+          <li>İngilizce (Orta düzey çalışma yetkinliği)</li>
+        </ul>
+      </div>
+      
+      <div class="info-section">
+        <h3>Hobiler ve İlgi Alanları</h3>
+        <ul class="info-list">
+          <li>Aksiyon ve bilim kurgu filmleri izlemek</li>
+          <li>Satranç oynamak</li>
+          <li>Strateji temalı oyunlar oynamak</li>
+          <li>Bilim kurgu romanları okumak</li>
+        </ul>
+      </div>
+    </div>
+  </div>
 
-  <section>
-    <h3>Katıldığı Seminerler</h3>
-    <ul>
-      <li>1 Mart 2024 – Yazılım Öğrenme Yolculuğu, Doğuş Teknoloji</li>
-      <li>20 Kasım 2023 – EBST Kariyer Söyleşisi, Balıkesir</li>
-      <li>Temmuz 2022 – Makine Öğrenmesi</li>
-      <li>Mart 2021 – Balıkesir Üniversitesi EBST Topluluğu</li>
-    </ul>
-  </section>
-
-  <section>
-    <h3>Beceriler</h3>
-    <ul>
-      <li>Office Programları</li>
-      <li>C#</li>
-      <li>SQLite</li>
-      <li>Python</li>
-      <li>Oracle SQL</li>
-      <li>Matlab</li>
-    </ul>
-  </section>
-
-  <section>
-    <h3>Diller</h3>
-    <p>İngilizce (Orta düzey çalışma yetkinliği)</p>
-  </section>
-
-  <section>
-    <h3>Hobiler ve İlgi Alanları</h3>
-    <ul>
-      <li>Aksiyon ve bilim kurgu filmleri izlemek</li>
-      <li>Satranç oynamak</li>
-      <li>Strateji temalı oyunlar oynamak</li>
-      <li>Bilim kurgu romanları okumak</li>
-    </ul>
-  </section>
-
-  <footer class="footer">
-    <p>&copy; 2024 Oğuzhan YILMAZ. Tüm hakları saklıdır.</p>
+  <!-- Footer -->
+  <footer id="contact">
+    <div class="footer-content">
+      <div class="footer-section" style="margin: 0 auto;">
+        <h4>İletişim</h4>
+        <div class="footer-links">
+          <a href="mailto:oguz.hyilmaz20@gmail.com"><i class="fas fa-envelope"></i> oguz.hyilmaz20@gmail.com</a>
+          <div class="social-links">
+            <a href="https://linkedin.com/in/oğuzhan-yılmaz-701874254" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+            <a href="https://www.youtube.com/@OguzhanY.Mobile" target="_blank"><i class="fab fa-youtube"></i> YouTube</a>
+            <a href="#"><i class="fab fa-github"></i> GitHub</a>
+          </div>
+        </div>
+      </div>
+    </div>
   </footer>
 </body>
 </html>
