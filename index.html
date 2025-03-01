@@ -30,10 +30,11 @@
       font-family: 'Inter', sans-serif;
       color: var(--text-primary);
       font-weight: 300;
-      line-height: 1.6;
+      line-height: 1.76; /* %10 artırıldı */
       height: 100vh;
       display: flex;
       flex-direction: column;
+      font-size: 110%; /* Genel olarak metinleri %10 büyüt */
     }
     
     /* Navigasyon Barı */
@@ -41,20 +42,20 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 15px 30px;
+      padding: 16.5px 33px; /* %10 artırıldı */
       background-color: rgba(0, 0, 0, 0.8);
       position: fixed;
       width: 100%;
       top: 0;
       left: 0;
       z-index: 999;
-      backdrop-filter: blur(5px);
-      -webkit-backdrop-filter: blur(5px);
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(5.5px); /* %10 artırıldı */
+      -webkit-backdrop-filter: blur(5.5px); /* %10 artırıldı */
+      box-shadow: 0 2.2px 11px rgba(0, 0, 0, 0.3); /* %10 artırıldı */
     }
 
     .navbar-logo {
-      font-size: 20px;
+      font-size: 22px; /* %10 artırıldı */
       font-weight: 500;
       color: var(--text-primary);
     }
@@ -66,8 +67,8 @@
     #navbar a {
       color: var(--text-secondary);
       text-decoration: none;
-      margin: 0 15px;
-      font-size: 16px;
+      margin: 0 16.5px; /* %10 artırıldı */
+      font-size: 17.6px; /* %10 artırıldı */
       transition: var(--transition);
       position: relative;
     }
@@ -80,8 +81,8 @@
       content: '';
       position: absolute;
       width: 0;
-      height: 2px;
-      bottom: -5px;
+      height: 2.2px; /* %10 artırıldı */
+      bottom: -5.5px; /* %10 artırıldı */
       left: 0;
       background-color: var(--primary-color);
       transition: var(--transition);
@@ -101,12 +102,12 @@
     }
     
     .hero-container {
-      max-width: 800px;
+      max-width: 880px; /* %10 artırıldı */
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 0 20px;
+      padding: 0 22px; /* %10 artırıldı */
     }
     
     .hero-text {
@@ -115,30 +116,30 @@
     }
     
     .hero-text h1 {
-      font-size: 42px;
+      font-size: 46.2px; /* %10 artırıldı */
       font-weight: 300;
-      margin-bottom: 10px;
+      margin-bottom: 11px; /* %10 artırıldı */
     }
     
     .hero-text h2 {
-      font-size: 24px;
+      font-size: 26.4px; /* %10 artırıldı */
       font-weight: 300;
       color: var(--text-secondary);
-      margin-bottom: 20px;
+      margin-bottom: 22px; /* %10 artırıldı */
     }
     
     .hero-text p {
-      margin: 0 auto 20px;
+      margin: 0 auto 22px; /* %10 artırıldı */
       color: var(--text-secondary);
-      font-size: 17px;
-      max-width: 600px;
+      font-size: 18.7px; /* %10 artırıldı */
+      max-width: 660px; /* %10 artırıldı */
     }
     
     .skills {
       display: flex;
       flex-wrap: wrap;
-      gap: 10px;
-      margin: 20px 0;
+      gap: 11px; /* %10 artırıldı */
+      margin: 22px 0; /* %10 artırıldı */
       justify-content: center;
     }
     
@@ -146,28 +147,28 @@
       display: inline-block;
       background-color: rgba(139, 0, 0, 0.2);
       color: var(--secondary-color);
-      padding: 6px 12px;
-      border-radius: 20px;
-      font-size: 14px;
+      padding: 6.6px 13.2px; /* %10 artırıldı */
+      border-radius: 22px; /* %10 artırıldı */
+      font-size: 15.4px; /* %10 artırıldı */
       transition: var(--transition);
     }
     
     .skill-tag:hover {
       background-color: rgba(139, 0, 0, 0.4);
-      transform: translateY(-2px);
+      transform: translateY(-2.2px); /* %10 artırıldı */
     }
     
     .cta-buttons {
       display: flex;
       justify-content: center;
-      margin-top: 25px;
-      gap: 15px;
+      margin-top: 27.5px; /* %10 artırıldı */
+      gap: 16.5px; /* %10 artırıldı */
     }
     
     .cta-btn {
-      padding: 10px 24px;
-      border-radius: 4px;
-      font-size: 16px;
+      padding: 11px 26.4px; /* %10 artırıldı */
+      border-radius: 4.4px; /* %10 artırıldı */
+      font-size: 17.6px; /* %10 artırıldı */
       font-weight: 500;
       text-decoration: none;
       transition: var(--transition);
@@ -180,31 +181,31 @@
     
     .primary-btn:hover {
       background-color: var(--secondary-color);
-      transform: translateY(-3px);
-      box-shadow: 0 5px 15px rgba(139, 0, 0, 0.4);
+      transform: translateY(-3.3px); /* %10 artırıldı */
+      box-shadow: 0 5.5px 16.5px rgba(139, 0, 0, 0.4); /* %10 artırıldı */
     }
     
     /* Footer */
     footer {
       background-color: rgba(0, 0, 0, 0.5);
-      padding: 32px 0;
-      border-top: 1px solid rgba(139, 0, 0, 0.3);
+      padding: 35.2px 0; /* %10 artırıldı */
+      border-top: 1.1px solid rgba(139, 0, 0, 0.3); /* %10 artırıldı */
     }
     
     .footer-content {
-      max-width: 1400px;
+      max-width: 1540px; /* %10 artırıldı */
       margin: 0 auto;
       display: flex;
       justify-content: center;
-      padding: 0 30px;
+      padding: 0 33px; /* %10 artırıldı */
     }
     
     .footer-section h4 {
-      font-size: 20px;
+      font-size: 22px; /* %10 artırıldı */
       font-weight: 500;
-      margin-bottom: 15px;
+      margin-bottom: 16.5px; /* %10 artırıldı */
       position: relative;
-      padding-bottom: 10px;
+      padding-bottom: 11px; /* %10 artırıldı */
       text-align: center;
     }
     
@@ -212,7 +213,7 @@
       content: '';
       position: absolute;
       width: 60%;
-      height: 2px;
+      height: 2.2px; /* %10 artırıldı */
       background-color: var(--primary-color);
       bottom: 0;
       left: 50%;
@@ -222,13 +223,13 @@
     .footer-links {
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 11px; /* %10 artırıldı */
       align-items: center;
     }
     
     .social-links {
       display: flex;
-      gap: 15px;
+      gap: 16.5px; /* %10 artırıldı */
       justify-content: center;
       flex-wrap: wrap;
     }
@@ -239,39 +240,41 @@
       transition: var(--transition);
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 11px; /* %10 artırıldı */
+      font-size: 17.6px; /* %10 artırıldı */
     }
     
     .footer-links a i {
       color: var(--primary-color);
+      font-size: 17.6px; /* %10 artırıldı */
     }
     
     .footer-links a:hover {
       color: var(--secondary-color);
-      transform: translateY(-3px);
+      transform: translateY(-3.3px); /* %10 artırıldı */
     }
     
     /* Responsive */
     @media (max-width: 768px) {
       #navbar {
         flex-direction: column;
-        padding: 15px 20px;
+        padding: 16.5px 22px; /* %10 artırıldı */
       }
       
       .navbar-logo {
-        margin-bottom: 10px;
+        margin-bottom: 11px; /* %10 artırıldı */
       }
       
       .hero-text h1 {
-        font-size: 32px;
+        font-size: 35.2px; /* %10 artırıldı */
       }
       
       .hero-text h2 {
-        font-size: 20px;
+        font-size: 22px; /* %10 artırıldı */
       }
       
       .social-links {
-        gap: 15px;
+        gap: 16.5px; /* %10 artırıldı */
       }
     }
     
@@ -279,7 +282,7 @@
       .social-links {
         flex-direction: column;
         align-items: center;
-        gap: 10px;
+        gap: 11px; /* %10 artırıldı */
       }
     }
   </style>
